@@ -46,8 +46,6 @@ def plot_all(instance):
         plt.show()
 
 
-# Normalleştirilmiş yönlendirme yükü (NRL), tüm düğümler tarafından gönderilen tüm yönlendirme kontrol paketlerinin hedef düğümlerde alınan veri paketlerinin sayısına oranıdır.
-
 
 instance = TraceResultHelper(scenario_files)
 instance.all_data = instance.get_all_data()
