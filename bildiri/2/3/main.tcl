@@ -37,7 +37,7 @@ $ns trace-all $tracefile
 set namfile [open nam.nam w]
 $ns namtrace-all $namfile
 $ns namtrace-all-wireless $namfile $val(x) $val(y)
-$ns use-newtrace
+#$ns use-newtrace
 set chan [new $val(chan)];#Create wireless channel
 
 #===================================

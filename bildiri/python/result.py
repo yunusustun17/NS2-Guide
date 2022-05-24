@@ -2,21 +2,14 @@ import matplotlib.pyplot as plt
 
 from TraceResultHelper import TraceResultHelper
 
-scenario_1_files = [
+scenario_files = [
     "../trace/Result_Senaryo-1.txt",
     "../trace/Result_Senaryo-2.txt",
     "../trace/Result_Senaryo-3.txt",
-    "../trace/Result_Senaryo-4.txt"
-]
-
-scenario_2_files = [
+    "../trace/Result_Senaryo-4.txt",
     "../trace/Result_Senaryo-5.txt",
     "../trace/Result_Senaryo-6.txt",
     "../trace/Result_Senaryo-7.txt",
-]
-
-scenario_3_files = [
-    "../trace/Result_Senaryo-5.txt",
     "../trace/Result_Senaryo-8.txt",
     "../trace/Result_Senaryo-9.txt"
 ]
@@ -29,30 +22,33 @@ data_keys_dict = {
     "Normalleştirilmiş Yönlendirme Yükü": "normalized_routing_load",
     "Ek Yük": "overhead"
 }
+y_labels = [
+    "%",
+    "kbps",
+    "second",
+    "",
+    ""
+]
 
 
 def plot_all(instance):
     global data_keys_dict
 
-    for key in data_keys_dict:
-        x = instance.all_data["file_names"]
-        h = instance.all_data[data_keys_dict[key]]
-        plt.title(key)
+    for key, value in enumerate(data_keys_dict):
+        # x = instance.all_data["file_names"]
+        x = [i.split("-")[-1] for i in instance.all_data["file_names"]]
+        h = instance.all_data[data_keys_dict[value]]
+        plt.title(value)
         plt.bar(x, height=h, color=c)
+        plt.savefig(f'../grafikler/{value}.png')
+        plt.xlabel("Senaryo")
+        plt.ylabel(y_labels[key])
         plt.show()
 
 
 # Normalleştirilmiş yönlendirme yükü (NRL), tüm düğümler tarafından gönderilen tüm yönlendirme kontrol paketlerinin hedef düğümlerde alınan veri paketlerinin sayısına oranıdır.
 
 
-instance = TraceResultHelper(scenario_1_files)
-instance.all_data = instance.get_all_data()
-plot_all(instance)
-
-instance = TraceResultHelper(scenario_2_files)
-instance.all_data = instance.get_all_data()
-plot_all(instance)
-
-instance = TraceResultHelper(scenario_3_files)
+instance = TraceResultHelper(scenario_files)
 instance.all_data = instance.get_all_data()
 plot_all(instance)
