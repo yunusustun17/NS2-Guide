@@ -20,9 +20,9 @@ class TraceResultHelper:
     def __arrange_file_data(self, file_data):
         new_data = file_data.split("\n")[1]
         if "Infinity" in new_data:
-            new_data = new_data.replace("Infinity", " 0.0")
+            new_data = new_data.replace("Infinity", " 3.0")
         if "NaN" in new_data:
-            new_data = new_data.replace("NaN", " 0.0")
+            new_data = new_data.replace("NaN", " 0.2")
         if "-0.0" in new_data:
             new_data = new_data.replace("-0.0", " 0.0")
 
