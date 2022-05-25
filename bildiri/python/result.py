@@ -40,9 +40,9 @@ def plot_all(instance):
         h = instance.all_data[data_keys_dict[value]]
         plt.title(value)
         plt.bar(x, height=h, color=c)
-        plt.savefig(f'../grafikler/{value}.png')
         plt.xlabel("Senaryo")
         plt.ylabel(y_labels[key])
+        plt.savefig(f'../grafikler/{value}.png')
         plt.show()
 
 
