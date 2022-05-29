@@ -14,7 +14,7 @@ scenario_files = [
     "../trace/Result_Senaryo-9.txt"
 ]
 
-c = ['green', 'red', 'blue', 'yellow']
+c = ['green', 'red', 'blue', 'yellow', "cyan", "black", "purple", "orange", "brown"]
 data_keys_dict = {
     "Paket Teslim Oranı": "packet_delivery_ratio",
     "Verim": "throughput",
@@ -44,7 +44,6 @@ def plot_all(instance):
         plt.ylabel(y_labels[key])
         plt.savefig(f'../grafikler/{value}.png')
         plt.show()
-
 
 
 instance = TraceResultHelper(scenario_files)
